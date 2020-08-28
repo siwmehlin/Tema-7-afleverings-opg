@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Personer</title>
+    <style>
+        body {
+            background-color: lightgray;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        article {
+            background-color: white;
+            box-shadow: 3px 3px 6px #333;
+            padding: 20px;
+
+
+
+        }
+
+        img {
+            max-width: 100%;
+            align-content: center;
+        }
+
+        section {
+            background-color: lightgray;
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            background-color: white;
+            box-shadow: 3px 3px 6px #333;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        footer h3 {
+            margin: 50px;
+            text-align: center;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Persongalleri af Siw Mehlin</h1>
+    <section>
+
+        <template>
+            <article>
+                <h2 class="navn"></h2>
+                <!--  h3 .efternavn er udkommateret da efternavn visis i h2 vha json     -->
+                <h3 class="efternavn"></h3>
+                <img src="" alt="">
+                <p class="køn"></p>
+                <p class="alder"></p>
+                <p class="religion"></p>
+                <p class="hobby"></p>
+                <p class="kæledyr"></p>
+                <p class="job"></p>
+                <p class="by"></p>
+                <p class="land"></p>
+
+            </article>
+        </template>
+    </section>
+    <footer>
+        <h3>Denne opgave er lavet af Siw Mehlin den 28.08.2020</h3>
+    </footer>
+    <script>
+        const link = "https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json";
+
+
+
+        async function hentdata(link) {
+            const response = await fetch(link);
+            const json = await response.json();
+            console.log(json);
+            vis(json);
+
+        }
+
+        function vis(personer) {
+            console.log(personer);
+
+            let container = document.querySelector("section");
+            let temp = document.querySelector("template");
+
+
+            personer.feed.entry.forEach(person => {
+
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector(".navn").textContent = person.gsx$navn.$t + " " + person.gsx$efternavn.$t;
+
+                klon.querySelector(".køn").textContent = "Køn: " + person.gsx$køn.$t;
+                klon.querySelector(".alder").textContent = "Alder: " + person.gsx$alder.$t + " år";
+                klon.querySelector(".religion").textContent = "Religion: " + person.gsx$religion.$t;
+                klon.querySelector(".hobby").textContent = "Hobby: " + person.gsx$hobby.$t;
+                klon.querySelector(".kæledyr").textContent = "Kæledyr: " + person.gsx$kæledyr.$t;
+                klon.querySelector(".job").textContent = "Job: " + person.gsx$job.$t;
+                klon.querySelector(".by").textContent = "By: " + person.gsx$by.$t;
+                klon.querySelector(".land").textContent = "Land: " + person.gsx$land.$t;
+
+                klon.querySelector("img").src = person.gsx$billede.$t;
+                container.appendChild(klon);
+
+
+            })
+
+        }
+
+
+        hentdata(link);
+    </script>
+</body></html>
