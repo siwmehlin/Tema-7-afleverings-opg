@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <!-- dette ses kun på siden vha java -->
+
+    <section id="popop">
+        <article>
+            <button id="luk">luk</button>
+            <div class="container">
+                <img src="" alt="">
+
+                <div class="column">
+                    <h1 class="navn" id="navn"></h1>
+                    <p>Kategori: <span class="køn"></span> </p>
+                    <p>Beskrivelse: <span class="beskrivelse"></span></p>
+                    <p>Pris: <span class="pris"></span></p>
+
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section id="forside">
+        <template>
+            <article id="person_boks">
+
+                <h2 class="navn"></h2>
+                <img src="" alt="">
+                <p class="køn"></p>
+                <p class="beskrivelse"></p>
+                <p class="pris"></p>
+
+            </article>
+        </template>
+    </section>
+
+    <!-- dette ses hele tiden -->
+
+    <!-- eksempel på topmenu til hjemmeside
+    <header>
+        <nav>
+            <ul id="topmenu" class="">
+                <li><a href="">Forside</a></li>
+                <li><a href="">Portfolio</a></li>
+                <li><a href="">Om mig</a></li>
+            </ul>
+        </nav>
+    </header>
+-->
+
+
+    <main>
+        <section class="fullwidth">
+
+            <div id="splash"></div>
+        </section>
+
+        <section id="container">
+
+            <section id="filtermenu">
+                <h1 id="emne">Alle</h1>
+                <button class="filter valgt" data-kategori="alle">Alle</button>
+                <button class="filter" data-kategori="forretter">forretter</button>
+                <button class="filter" data-kategori="hovedretter">Mænd</button>
+                <button class="filter" data-kategori="sideorders">Sideorders</button>
+                <button class="filter" data-kategori="desserter">Desserter</button>
+                <button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
+            </section>
+
+
+            <section id="list">
+
+
+            </section>
+        </section>
+    </main>
+    <footer>
+        <h3>Denne opgave er lavet af Siw Mehlin den 28.08.2020</h3>
+    </footer>
+
+
+    <script src="java.js">
+
+    </script>
+</body></html>
